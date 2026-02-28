@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Projects</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ================= VARIABLES ================= */
+
+:root{
+--bg:#05070d;
+--card:#0b1220;
+--glass:rgba(255,255,255,0.04);
+--primary:#00f2ff;
+--text:#e6f1ff;
+--muted:#9fb2c7;
+}
+
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:radial-gradient(circle at top,#0b1b3a,#05070d 60%);
+color:var(--text);
+opacity:0;
+animation:pageFadeIn .6s ease forwards;
+}
+
+/* ================= PAGE TRANSITION ================= */
+
+@keyframes pageFadeIn{
+from{opacity:0;transform:translateY(15px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.page-exit{
+animation:pageFadeOut .5s ease forwards;
+}
+
+@keyframes pageFadeOut{
+to{opacity:0;transform:translateY(-15px);}
+}
+
+a{text-decoration:none;color:var(--text);}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 10%;
+background:rgba(11,15,26,.85);
+backdrop-filter:blur(10px);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:9999;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+}
+
+.logo span{color:var(--primary);}
+
+.nav-links{
+list-style:none;
+display:flex;
+gap:26px;
+}
+
+.nav-links a{
+position:relative;
+}
+
+.nav-links a::after{
+content:"";
+position:absolute;
+width:0;
+height:2px;
+background:var(--primary);
+left:0;
+bottom:-6px;
+transition:.3s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.menu-toggle{
+display:none;
+font-size:26px;
+cursor:pointer;
+color:var(--primary);
+}
+
+/* ================= PROJECT SECTION ================= */
+
+.projects-section{
+padding:120px 10% 90px;
+}
+
+.projects-section h1{
+font-size:46px;
+}
+
+.projects-section p{
+color:var(--muted);
+margin-top:6px;
+margin-bottom:60px;
+max-width:520px;
+}
+
+/* ================= GRID ================= */
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+}
+
+/* ================= CARD ================= */
+
+.project-card{
+background:linear-gradient(180deg,#0c152a,#070c18);
+border-radius:20px;
+overflow:hidden;
+border:1px solid rgba(0,242,255,.18);
+box-shadow:0 0 25px rgba(0,242,255,.08);
+transition:.5s ease;
+display:flex;
+flex-direction:column;
+animation:fadeUp .7s ease forwards;
+}
+
+.project-card:hover{
+transform:translateY(-14px) scale(1.01);
+box-shadow:0 0 55px rgba(0,242,255,.45);
+}
+
+/* IMAGE */
+
+.project-card img{
+width:100%;
+height:210px;
+object-fit:cover;
+transition:.6s;
+}
+
+.project-card:hover img{
+transform:scale(1.08);
+filter:brightness(1.05);
+}
+
+/* CONTENT */
+
+.project-content{
+padding:26px;
+display:flex;
+flex-direction:column;
+height:100%;
+}
+
+.project-content h3{
+font-size:19px;
+margin-bottom:10px;
+color:#fff;
+}
+
+.project-content p{
+color:var(--muted);
+font-size:14px;
+line-height:1.7;
+margin-bottom:18px;
+}
+
+/* TAGS */
+
+.project-tags{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:22px;
+}
+
+.project-tags span{
+font-size:12px;
+padding:5px 14px;
+border-radius:30px;
+background:rgba(0,242,255,.08);
+border:1px solid rgba(0,242,255,.35);
+color:var(--primary);
+}
+
+/* BUTTONS */
+
+.project-buttons{
+display:flex;
+gap:16px;
+margin-top:auto;
+}
+
+.project-buttons a{
+flex:1;
+text-align:center;
+padding:11px;
+border-radius:30px;
+font-size:14px;
+font-weight:600;
+transition:.35s;
+}
+
+/* CODE */
+
+.btn-code{
+border:1px solid var(--primary);
+color:var(--primary);
+}
+
+.btn-code:hover{
+background:var(--primary);
+color:#000;
+}
+
+/* LIVE */
+
+.btn-live{
+background:linear-gradient(135deg,#00f2ff,#00bcd4);
+color:#000;
+}
+
+.btn-live:hover{
+box-shadow:0 0 22px var(--primary);
+transform:scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+background:#060b15;
+padding:26px 10%;
+text-align:center;
+border-top:1px solid rgba(0,242,255,.15);
+margin-top:100px;
+}
+
+footer p{
+color:var(--muted);
+font-size:14px;
+}
+
+footer span{color:var(--primary);}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.menu-toggle{display:block;}
+
+.nav-links{
+position:absolute;
+top:70px;
+right:0;
+background:#0b0f1a;
+width:230px;
+flex-direction:column;
+padding:22px;
+gap:16px;
+display:none;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.projects-section{
+padding:90px 6%;
+}
+
+.projects-section h1{
+font-size:34px;
+}
+
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav class="navbar">
+
+<div class="logo">Sharath<span>Portfolio</span></div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="certificates.html">Certificates</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="skills.html">Skills</a></li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
+</nav>
+</header>
+
+<section class="projects-section">
+
+<h1>🚀 My Projects</h1>
+<p>A collection of my major works — blending research & development.</p>
+
+<div class="project-grid">
+
+<!-- PROJECT 1 -->
+<div class="project-card">
+
+<img src="images\spamnotspam.jpg">
+
+<div class="project-content">
+<h3>Email Spam not Spam Detection</h3>
+
+<p>Machine learning-based NLP application</p>
+
+<div class="project-tags">
+<span>Python</span>
+<span>ML</span>
+<span>Scikit-learn</span>
+<span>TF-IDF VECTORIZER</span>
+<span>MULTINOMINAL NAIVE BAYES</span>
+</div>
+
+<div class="project-buttons">
+<a class="btn-code" href="#" target="_blank">Code</a>
+<a class="btn-live" href="https://emailspamnotspam-ee5ktflysilv4yyim4xcyk.streamlit.app/" target="_blank">Live</a>
+</div>
+</div>
+</div>
+
+<!-- PROJECT 2 -->
+<div class="project-card">
+
+<img src="images\sentiment-analysis.jpg">
+
+<div class="project-content">
+<h3>Twitter Sentiment Analysis</h3>
+
+<p>Twitter Sentiment Analysis is a machine
+learning-based NLP project that analyzes
+tweets and classifies them into Positive,
+Neutral, or Negative sentiments..</p>
+
+<div class="project-tags">
+<span>PYTHON</span>
+<span>NLP</span>
+<span>EMBEDDING</span>
+<span>SCIKIT-LEARN</span>
+</div>
+
+<div class="project-buttons">
+<a class="btn-code" href="#">Code</a>
+<a class="btn-live" href="https://nlp-sentiment-app-33tbrypaujvtsjevgjp6y4.streamlit.app/">Live</a>
+</div>
+</div>
+</div>
+
+<!-- ## PROJECT 3 -->
+
+<div class="project-card">
+
+<img src="images\6b9f9269-c0e3-4110-a2cb-de16221aad6b.png">
+
+<div class="project-content">
+<h3>Potato Disease Classification</h3>
+
+<p>Developed an end-to-end Potato Disease
+Classification system using Convolutional
+Neural Networks (CNN) to automatically
+identify common potato leaf conditions
+such as Early Blight, Late Blight, and
+Healthy leaves from images.</p>
+
+<div class="project-tags">
+<span>PYTHON</span>
+<span>CNN</span>
+<span>ANN</span>
+<span>STREAMLIT</span>
+</div>
+
+<div class="project-buttons">
+<a class="btn-code" href="#">Code</a>
+<a class="btn-live" href="https://potato-disease-classification-mhr2nho9jfle5um5qprnmm.streamlit.app/">Live</a>
+</div>
+</div>
+</div>
+
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 <span>Sharath Kumar N</span> | All Rights Reserved</p>
+</footer>
+
+<script>
+
+/* Toggle Menu */
+function toggleMenu(){
+document.getElementById("navLinks").classList.toggle("active");
+}
+
+/* Page Transition */
+document.querySelectorAll("a").forEach(link=>{
+link.addEventListener("click",function(e){
+if(this.target==="_blank") return;
+e.preventDefault();
+const url=this.href;
+document.body.classList.add("page-exit");
+setTimeout(()=>{window.location.href=url;},500);
+});
+});
+
+</script>
+
+</body>
+</html>
